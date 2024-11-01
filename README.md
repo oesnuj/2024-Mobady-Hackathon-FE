@@ -3,7 +3,6 @@
 
 
 ### 디렉토리 구조
-# 프로젝트 폴더 구조
 ```plaintext
 root
 ├── public
