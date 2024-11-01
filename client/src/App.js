@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import LandingPage from "./pages/Landing/LandingPage";
+import HomePage from './pages/Home/HomePage';
 
-function App() {
+const App = () => {
+  const [isSplashVisible, setIsSplashVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsSplashVisible(false);
+    }, 1500);
+
+    return () => clearTimeout(timer); // 컴포넌트가 언마운트될 때 타이머를 정리합니다.
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>오늘 바로 부산</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {isSplashVisible ? (
+          <Route path="*" element={<LandingPage />} />
+        ) : (
+          <Route path="*" element={<HomePage />} />
+        )}
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
