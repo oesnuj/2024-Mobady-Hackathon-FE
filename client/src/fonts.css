@@ -1,0 +1,11 @@
+/* src/fonts.css */
+@font-face {
+  font-family: 'EFAone';
+  src: url('../public/fonts/EF_AONE.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'EFAone', sans-serif;
+}
