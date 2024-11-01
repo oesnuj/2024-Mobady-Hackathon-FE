@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import LandingPage from "./pages/Landing/LandingPage";
 import HomePage from './pages/Home/HomePage';
+import RecommendPage from "./pages/Recommend/RecommendPage";
 
 const App = () => {
   const [isSplashVisible, setIsSplashVisible] = useState(true);
@@ -20,7 +21,10 @@ const App = () => {
         {isSplashVisible ? (
           <Route path="*" element={<LandingPage />} />
         ) : (
-          <Route path="*" element={<HomePage />} />
+            <>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/recommend" element={<RecommendPage />} />
+            </>
         )}
       </Routes>
     </Router>
