@@ -10,8 +10,8 @@ root
 │   ├── images                        # 이미지 파일 폴더
 │   │   ├── logo.png                  # 로고 이미지 파일
 │   │   └── icons                     # 아이콘 이미지 폴더
-│   │       ├── search-icon.png       # 검색 아이콘
-│   │       └── refresh-icon.png      # 위치 아이콘
+│   │       ├── search_icon.png       # 검색 아이콘
+│   │       └── refresh_icon.png      # 위치 아이콘
 │   └── favicon.ico                   
 │
 └── src
