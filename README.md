@@ -15,8 +15,8 @@ root
 │
 └── src
     ├── components                    # 컴포넌트 폴더
-    │   ├── DepartureInputModal       # 출발지 입력 모달 컴포넌트
-    │   │   └── DepartureInputModal.jsx
+    │   ├── DepartureInputModalContent       # 출발지 입력 모달 컴포넌트
+    │   │   └── DepartureInputModalContent.jsx
     │   └── Common                    # 공통 컴포넌트 폴더 (예: 버튼, 헤더 등)
     │       └── Button.jsx
     │
