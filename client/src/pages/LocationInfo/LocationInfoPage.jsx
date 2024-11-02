@@ -7,6 +7,7 @@ import {PlaceInfo} from '../../components/PlaceInfo/PlaceInfo';
 import {ToggleMapContainer} from '../../components/LocationInfo/ToggleMapContainer';
 import styled from 'styled-components';
 import {LocationPinningMap} from '../../components/LocationPinningMap/LocationPinningMap';
+import LocationInfoMap from './LocationInfoMap';
 
 const ButtonContainer = styled.div`
   z-index: 1000;
@@ -90,7 +91,9 @@ const LocationInfoPage = () => {
         {mapToggle ? (
           <PlaceInfo>{cardData.summary}</PlaceInfo>
         ) : (
-          <LocationPinningMap />
+          <LocationPinningMap>
+            <LocationInfoMap/>
+          </LocationPinningMap>
         )}
       </ToggleMapContainer>
     </InitialBackground>
