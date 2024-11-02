@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {InitialBackground} from '../../components/Common/InitialBackground';
-import {useLocation} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {Header, HeaderImage} from '../../components/Common/Header';
 import {ImageContainer} from '../../components/ImageContainer/ImageContainer';
 import {PlaceInfo} from '../../components/PlaceInfo/PlaceInfo';
 import {ToggleMapContainer} from '../../components/LocationInfo/ToggleMapContainer';
 import styled from 'styled-components';
 import {LocationPinningMap} from '../../components/LocationPinningMap/LocationPinningMap';
-
+import LocationInfoMap from './LocationInfoMap';
+import Button from '../../components/Common/Button';
 const ButtonContainer = styled.div`
   z-index: 1000;
   top: 280px;
@@ -56,9 +57,12 @@ const ShowMapButton = styled.div`
 
 const LocationInfoPage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const {cardData} = location.state || {};
   const [mapToggle, setMapToggle] = useState(false); // true일 때 '지도' 버튼 활성화, false일 때 '정보' 버튼 활성화
-
+  const handleButtonClick = () => {
+    navigate('/routeView'); // 이동할 경로 설정
+  };
   useEffect(() => {
     console.log(cardData);
   }, []);
@@ -90,9 +94,12 @@ const LocationInfoPage = () => {
         {mapToggle ? (
           <PlaceInfo>{cardData.summary}</PlaceInfo>
         ) : (
-          <LocationPinningMap />
+          <LocationPinningMap>
+            <LocationInfoMap/>
+          </LocationPinningMap>
         )}
       </ToggleMapContainer>
+      <Button text={`${cardData.name}로 가보실래요?`} onClick={handleButtonClick} />
     </InitialBackground>
   );
 };
