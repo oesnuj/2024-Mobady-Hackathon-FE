@@ -58,12 +58,10 @@ const ShowMapButton = styled.div`
 `;
 
 const LocationInfoPage = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const navigate = useNavigate();
   const {cardData} = location.state || {};
   const [mapToggle, setMapToggle] = useState(false); // true일 때 '지도' 버튼 활성화, false일 때 '정보' 버튼 활성화
-
 
   const start = {
     lng: 129.1023126,
@@ -77,7 +75,6 @@ const LocationInfoPage = () => {
 
   saveStartCoordinate(start);
   saveEndCoordinate(end);
-
 
   const handleButtonClick = () => {
     navigate('/routeView'); // 이동할 경로 설정
@@ -115,13 +112,15 @@ const LocationInfoPage = () => {
           <PlaceInfo>{cardData.summary}</PlaceInfo>
         ) : (
           <LocationPinningMap>
-            <LocationInfoMap/>
+            <LocationInfoMap />
           </LocationPinningMap>
         )}
       </ToggleMapContainer>
 
-      <Button text={`${cardData.name}로 가보실래요?`} onClick={handleButtonClick} />
-
+      <Button
+        text={`${cardData.name}로 가보실래요?`}
+        onClick={handleButtonClick}
+      />
     </InitialBackground>
   );
 };
