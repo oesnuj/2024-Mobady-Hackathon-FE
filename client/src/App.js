@@ -10,6 +10,7 @@ import LandingPage from './pages/Landing/LandingPage';
 import HomePage from './pages/Home/HomePage';
 import RecommendPage from './pages/Recommend/RecommendPage';
 import LocationInfoPage from './pages/LocationInfo/LocationInfoPage';
+import RouteViewer from './pages/RouteViewer/RouteViewer';
 import './App.css';
 
 const App = () => {
@@ -47,6 +48,7 @@ const AnimatedRoutes = ({isSplashVisible}) => {
             <Route path="/" element={<HomePage />} />
             <Route path="/recommend" element={<RecommendPage />} />
             <Route path="/locationInfo" element={<LocationInfoPage />} />
+            <Route path="/routeView" element={<RouteViewer />} />
           </Routes>
         </CSSTransition>
       )}

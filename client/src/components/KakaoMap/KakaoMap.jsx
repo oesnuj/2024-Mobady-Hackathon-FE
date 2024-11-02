@@ -1,17 +1,18 @@
-import React, {useEffect, useState, useCallback, useMemo} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Map, Polyline} from 'react-kakao-maps-sdk';
 import Maker from './Maker';
 import {getStartCoordinate, getEndCoordinate} from '../../utils/storage.js';
 import {getCarDirection} from '../../api/getCarDirection';
+import LoadingMap from '../Common/LoadingMap';
 
 const KakaoMap = CourseResponse => {
   const [linePath, setLinePath] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const storedEndCoord = getEndCoordinate();
   const storedStartCoord = getStartCoordinate();
+
   // 경로 데이터를 받아오는 함수 (최초 렌더링 시 한 번만 실행)
   const fetchDirection = async () => {
-    setIsLoading(true);
     console.log(storedStartCoord, storedEndCoord, CourseResponse, setLinePath);
     await getCarDirection(
       storedStartCoord,
@@ -19,17 +20,22 @@ const KakaoMap = CourseResponse => {
       CourseResponse,
       setLinePath,
     );
-    setIsLoading(false);
   };
 
   useEffect(() => {
+    // 로딩 상태를 1.5초 동안 유지
+    const timer = setTimeout(() => setIsLoading(false), 1500);
+
     fetchDirection();
+
+    // 컴포넌트가 언마운트될 때 타이머를 정리
+    return () => clearTimeout(timer);
   }, [CourseResponse.CourseResponse]);
 
   return (
     <>
       {isLoading ? (
-        <p>로딩 중...</p> // 로딩 표시
+        <LoadingMap /> // 1.5초 동안 로딩 표시
       ) : (
         <Map
           id="map"
@@ -38,8 +44,9 @@ const KakaoMap = CourseResponse => {
             lng: CourseResponse?.centerX || Number(storedStartCoord?.lng),
           }}
           style={{
+            marginTop: '80px',
             width: '420px',
-            height: '350px',
+            height: '80%',
           }}
           level={8}
         >

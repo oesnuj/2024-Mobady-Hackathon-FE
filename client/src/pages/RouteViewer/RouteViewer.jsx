@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import KakaoMap from '../../components/KakaoMap/KakaoMap';
-import Modal from '../../components/common/Modal/Modal';
+import Modal from '../../components/Common/Modal/Modal';
 import DepartureInputModalContent from '../../components/DepartureInputModalContent/DepartureInputModalContent';
+import {InitialBackground} from '../../components/Common/InitialBackground';
+import {Header, HeaderImage} from '../../components/Common/Header';
 
 const RouteViewer = () => {
   const [isInputModalOpen, setIsInputModalOpen] = useState(false); // "경로 정보 보기" 모달 상태
@@ -24,7 +26,16 @@ const RouteViewer = () => {
     // 예시: setRecommendationList([...]);
   }, []);
   return (
-    <div>
+    <InitialBackground>
+      <Header>
+        <HeaderImage>
+          <img
+            src={process.env.PUBLIC_URL + '/images/header_logo.png'}
+            height="90%"
+            alt="Header Logo"
+          />
+        </HeaderImage>
+      </Header>
       <KakaoMap CourseResponse={recommendationList} />
 
       {/* "경로 정보 보기" 버튼과 모달 */}
@@ -52,7 +63,7 @@ const RouteViewer = () => {
           />
         </Modal>
       )}
-    </div>
+    </InitialBackground>
   );
 };
 
