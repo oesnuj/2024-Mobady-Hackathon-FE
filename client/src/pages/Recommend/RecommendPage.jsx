@@ -14,10 +14,16 @@ import {
   Description,
   Location,
 } from '../../components/Recommend/RecommendCard';
+import {saveEndCoordinate} from '../../utils/storage';
 
 const RecommendCard = ({cardData}) => {
   const navigate = useNavigate();
   const navigateLocationInfo = cardData => {
+    const End = {
+      lat : cardData.y,
+      lng : cardData.x,
+    };
+    saveEndCoordinate(End);
     navigate('/locationInfo', {state: {cardData: cardData}});
   };
 
