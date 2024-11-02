@@ -7,8 +7,10 @@ import {PlaceInfo} from '../../components/PlaceInfo/PlaceInfo';
 import {ToggleMapContainer} from '../../components/LocationInfo/ToggleMapContainer';
 import styled from 'styled-components';
 import {LocationPinningMap} from '../../components/LocationPinningMap/LocationPinningMap';
+import {saveEndCoordinate, saveStartCoordinate} from '../../utils/storage';
 import LocationInfoMap from './LocationInfoMap';
 import Button from '../../components/Common/Button';
+
 const ButtonContainer = styled.div`
   z-index: 1000;
   top: 280px;
@@ -56,13 +58,31 @@ const ShowMapButton = styled.div`
 `;
 
 const LocationInfoPage = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const navigate = useNavigate();
   const {cardData} = location.state || {};
   const [mapToggle, setMapToggle] = useState(false); // true일 때 '지도' 버튼 활성화, false일 때 '정보' 버튼 활성화
+
+
+  const start = {
+    lng: 129.1023126,
+    lat: 35.1385167,
+  };
+
+  const end = {
+    lng: cardData.x,
+    lat: cardData.y,
+  };
+
+  saveStartCoordinate(start);
+  saveEndCoordinate(end);
+
+
   const handleButtonClick = () => {
     navigate('/routeView'); // 이동할 경로 설정
   };
+
   useEffect(() => {
     console.log(cardData);
   }, []);
@@ -99,7 +119,9 @@ const LocationInfoPage = () => {
           </LocationPinningMap>
         )}
       </ToggleMapContainer>
+
       <Button text={`${cardData.name}로 가보실래요?`} onClick={handleButtonClick} />
+
     </InitialBackground>
   );
 };
