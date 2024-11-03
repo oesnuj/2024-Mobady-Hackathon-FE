@@ -10,6 +10,9 @@ import {LocationPinningMap} from '../../components/LocationPinningMap/LocationPi
 import {saveEndCoordinate, saveStartCoordinate} from '../../utils/storage';
 import LocationInfoMap from './LocationInfoMap';
 import Button from '../../components/Common/Button';
+const ButtonBox = styled.div`
+  width: 90%;
+`
 
 const ButtonContainer = styled.div`
   z-index: 1000;
@@ -116,11 +119,12 @@ const LocationInfoPage = () => {
           </LocationPinningMap>
         )}
       </ToggleMapContainer>
-
+    <ButtonBox>
       <Button
         text={`${cardData.name}로 가보실래요?`}
         onClick={handleButtonClick}
       />
+    </ButtonBox>
     </InitialBackground>
   );
 };

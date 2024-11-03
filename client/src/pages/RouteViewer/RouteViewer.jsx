@@ -4,6 +4,12 @@ import Modal from '../../components/Common/Modal/Modal';
 import DepartureInputModalContent from '../../components/DepartureInputModalContent/DepartureInputModalContent';
 import {InitialBackground} from '../../components/Common/InitialBackground';
 import {Header, HeaderImage} from '../../components/Common/Header';
+import styled from 'styled-components';
+import Button from '../../components/Common/Button';
+const ButtonBox = styled.div`
+  width: 420px;
+`;
+
 
 const RouteViewer = () => {
   const [isInputModalOpen, setIsInputModalOpen] = useState(false); // "경로 정보 보기" 모달 상태
@@ -39,9 +45,9 @@ const RouteViewer = () => {
       <KakaoMap CourseResponse={recommendationList} />
 
       {/* "경로 정보 보기" 버튼과 모달 */}
-      <button onClick={openInputModal} style={{marginTop: '20px'}}>
-        경로 정보 보기
-      </button>
+      <ButtonBox>
+      <Button text={"경로 재탐색"} onClick={openInputModal} />
+      </ButtonBox>
       {isInputModalOpen && (
         <Modal isOpen={isInputModalOpen} onClose={closeInputModal}>
           <DepartureInputModalContent
