@@ -6,7 +6,7 @@
 
 ### [백엔드 레포지토리로 이동하기 👆](https://github.com/JONG-KYEONG)
 ### [오바부 서비스 체험해보기 👆](https://obabu.netlify.app/)
-
+- 현재 백엔드 배포 X
 
 <br>
 
