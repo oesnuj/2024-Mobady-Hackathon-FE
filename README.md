@@ -8,7 +8,7 @@
 ![image](https://github.com/user-attachments/assets/6b173a9d-1b87-4dd7-aab1-33a871b19341)
 
 
-### [백엔드 레포지토리로 이동하기 👆](https://github.com/JONG-KYEONG)
+### [백엔드 레포지토리로 이동하기 👆](https://github.com/JONG-KYEONG/hackathon)
 ### [오바부 서비스 체험해보기 👆](https://obabu.netlify.app/)
 - 현재 백엔드 배포 X
 
